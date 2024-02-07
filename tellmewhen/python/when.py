@@ -1,4 +1,5 @@
 import subprocess
+import toml
 
 def load(config):
     """Open TOML file and return dictionary"""
@@ -8,10 +9,12 @@ def load(config):
 
 def when():
     """"""
-    tells = load("tells.toml")[tells]
-    for tell_name, tell in tells:
-        command = f"echo -e '{tell[2]} /root/tellme.py {tell_name}\n' | crontab -u root -"
-        subprocess.run(command, shell=True, check=True)
+    tells = load("tells.toml")["tells"]
+    append = ""
+    for tell_name, tell in tells.items():
+        append += f"{tell[2]} /usr/bin/python3 /root/tellme.py {tell_name}\n"
+    command = f"echo -e '{append}' | crontab -u root -"
+    subprocess.run(command, shell=True, check=True)
 
 if __name__ == "__main__":
     when()

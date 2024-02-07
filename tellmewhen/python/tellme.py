@@ -21,9 +21,7 @@ def post(tell, settings):
     if "t" in calls:
         # Send Telegram message
         tele = settings["tele"]
-        post = requests.post(f"https://api.telegram.org/bot{tele['bot_token']}/sendMessage",
-                             params={"chat_id": tele["chat_id"],
-                                     "text": tell[0]})
+        post = requests.post(f"https://api.telegram.org/bot{tele['bot_token']}/sendMessage", params={"chat_id": tele["chat_id"], "text": tell[0]},)
 
 def get_arg():
     tell = argv[1]
