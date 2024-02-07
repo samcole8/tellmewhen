@@ -2,6 +2,7 @@
 
 from sys import argv
 import toml
+import requests
 
 def load(config):
     """Open TOML file and return dictionary"""
@@ -9,19 +10,20 @@ def load(config):
         toml_dict = toml.load(toml_file)
     return toml_dict
 
-def post(tell, config):
+def post(tell, settings):
     calls = list(tell[1])
     if "s" in calls:
         # Send SMS
-        print("s")
-        
+        sms = settings["sms"]
     if "e" in calls:
         # Send email
-        print("e")
+        email = settings["email"]
     if "t" in calls:
         # Send Telegram message
-        print("t")
-
+        tele = settings["tele"]
+        post = requests.post(f"https://api.telegram.org/bot{tele['bot_token']}/sendMessage",
+                             params={"chat_id": tele["chat_id"],
+                                     "text": tell[0]})
 
 def get_arg():
     tell = argv[1]
@@ -34,7 +36,7 @@ def tellme():
     config = load("tells.toml")
     tell = config["tells"][tell_name]
     # Post tell data
-    post(tell, config)
+    post(tell, config["settings"])
 
 if __name__ == "__main__":
     tellme()
