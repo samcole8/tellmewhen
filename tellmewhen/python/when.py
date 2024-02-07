@@ -1,21 +1,17 @@
-def parse(cronstring):
+import subprocess
 
+def load(config):
+    """Open TOML file and return dictionary"""
+    with open(config, "r") as toml_file:
+        toml_dict = toml.load(toml_file)
+    return toml_dict
 
-def check(job):
-    # Check job syntax is valid
-    # - 3 items
-    # - one occurence max of s,e,t in item 2. no other characters
-    # - cron job must be valid
-    # - datatypes must be strings
-    
-
-def when(new=True):
-    print("Scanning tells.toml for errors")
-    for job in tells:
-        check(job)
-    print("Error check complete: No errors")
-    # Build and add crontab
-    print("Program exit: success")
+def when():
+    """"""
+    tells = load("tells.toml")[tells]
+    for tell_name, tell in tells:
+        command = f"echo -e '{tell[2]} /root/tellme.py {tell_name}\n' | crontab -u root -"
+        subprocess.run(command, shell=True, check=True)
 
 if __name__ == "__main__":
     when()
