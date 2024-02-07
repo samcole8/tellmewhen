@@ -9,6 +9,8 @@
 
     [settings.tele]
         # Telegram API settings
+        chat_id = ""
+        bot_token = ""
 
 [tells]
 
