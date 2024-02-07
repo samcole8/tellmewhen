@@ -1,0 +1,16 @@
+[settings]
+
+    [settings.sms]
+        # SMS API settings
+
+
+    [settings.email]
+        # Email API settings
+
+    [settings.tele]
+        # Telegram API settings
+
+[tells]
+
+    # Add your tells here
+    # e.g. car_wash = ["Get the car washed!", "st", "0 0 1 * *"]
