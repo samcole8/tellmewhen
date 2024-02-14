@@ -37,7 +37,6 @@ def sms(tell, s):
 
 def post(tell, settings):
     calls = list(tell[1])
-    status = {}
     if "s" in calls:
         # Send SMS message
         sms(tell[0], settings["sms"])
