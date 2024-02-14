@@ -5,6 +5,13 @@
 
     [settings.email]
         # Email API settings
+        to = "" # Destination email address
+        login = "" # SMTP server login email address
+        from = "" # Sender email address
+        secret = "" # App key
+        port = "" # SMTP SSL port
+        server = "" # SMTP server FQDN
+        body = "" # Body of your message
 
     [settings.tele]
         # Telegram API settings
