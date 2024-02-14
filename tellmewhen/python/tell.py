@@ -14,6 +14,7 @@ def load(config):
 
 def post(tell, settings):
     calls = list(tell[1])
+    status = {}
     if "s" in calls:
         # Send SMS
         sms = settings["sms"]
@@ -23,7 +24,8 @@ def post(tell, settings):
     if "t" in calls:
         # Send Telegram message
         tele = settings["tele"]
-        post = requests.post(f"https://api.telegram.org/bot{tele['bot_token']}/sendMessage", params={"chat_id": tele["chat_id"], "text": tell[0]},)
+        status["t"] = requests.post(f"https://api.telegram.org/bot{tele['bot_token']}/sendMessage", params={"chat_id": tele["chat_id"], "text": tell[0]},).status_code
+    return status
 
 def tellme(tell, config):
     # Get tell data from config
