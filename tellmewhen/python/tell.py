@@ -6,6 +6,7 @@ import requests
 import smtplib, ssl
 from email.mime.text import MIMEText
 
+DEV = False
 CONFIG = "me.toml"
 
 def load(config):
@@ -48,7 +49,11 @@ def post(tell, settings):
 
 def tellme(tell, config):
     # Get tell data from config
-    config = load("me.toml")
+    if DEV is True:
+        config = "dev.toml"
+    else:
+        config = "me.toml"
+    config = load(config)
     tell = config["tells"][tell]
     # Post tell data
     post(tell, config["settings"])
