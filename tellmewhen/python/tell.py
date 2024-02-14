@@ -15,44 +15,45 @@ def load(config):
         toml_dict = toml.load(toml_file)
     return toml_dict
 
+def tele(tell, t):
+    requests.post(f"https://api.telegram.org/bot{t['bot_token']}/sendMessage", params={"chat_id": t["chat_id"], "text": tell},).status_code
+
+def email(tell, e):
+    # Set body
+    msg = MIMEText(e["body"])
+    msg["Subject"] = tell
+    msg["From"] = e["from"]
+    
+    # Initiate SSL
+    context = ssl.create_default_context()
+
+    # Login and send email
+    with smtplib.SMTP_SSL(e["server"], e["port"], context=context) as server:
+        server.login(e["login"], e["secret"])
+        server.sendmail(e["from"], e["to"], msg.as_string())
+
+def sms(tell, s):
+    print("SMS not implemented yet!")
+
 def post(tell, settings):
     calls = list(tell[1])
     status = {}
     if "s" in calls:
         # Send SMS message
-        sms = settings["sms"]
+        sms(tell[0], settings["sms"])
     if "e" in calls:
         # Send email
-        
-        email = settings["email"]
-
-        # Set body
-        msg = MIMEText(email["body"])
-        msg["Subject"] = tell[0]
-        msg["From"] = email["from"]
-        
-        # Initiate SSL
-        context = ssl.create_default_context()
-
-        # Login and send email
-        with smtplib.SMTP_SSL(email["server"], email["port"], context=context) as server:
-            server.login(email["login"], email["secret"])
-            server.sendmail(email["from"], email["to"], msg.as_string())
-
+        email(tell[0], settings["email"])
     if "t" in calls:
-
         # Send Telegram message
-        tele = settings["tele"]
-        status["t"] = requests.post(f"https://api.telegram.org/bot{tele['bot_token']}/sendMessage", params={"chat_id": tele["chat_id"], "text": tell[0]},).status_code
-    
-    return status
+        tele(tell[0], settings["tele"])
 
 def tellme(tell, config):
     # Get tell data from config
     if DEV is True:
         config = "dev.toml"
     else:
-        config = "me.toml"
+        config = CONFIG
     config = load(config)
     tell = config["tells"][tell]
     # Post tell data
