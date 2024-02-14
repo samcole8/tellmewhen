@@ -3,14 +3,11 @@
     [settings.sms]
         # SMS API settings
 
-
     [settings.email]
         # Email API settings
 
     [settings.tele]
         # Telegram API settings
-        chat_id = ""
-        bot_token = ""
 
 [tells]
 
