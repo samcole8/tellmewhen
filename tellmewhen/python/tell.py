@@ -4,6 +4,8 @@ from sys import argv
 import toml
 import requests
 
+CONFIG = "me.toml"
+
 def load(config):
     """Open TOML file and return dictionary"""
     with open(config, "r") as toml_file:
@@ -23,12 +25,12 @@ def post(tell, settings):
         tele = settings["tele"]
         post = requests.post(f"https://api.telegram.org/bot{tele['bot_token']}/sendMessage", params={"chat_id": tele["chat_id"], "text": tell[0]},)
 
-def tellme(tell):
+def tellme(tell, config):
     # Get tell data from config
-    config = load("tells.toml")
+    config = load("me.toml")
     tell = config["tells"][tell]
     # Post tell data
     post(tell, config["settings"])
 
 if __name__ == "__main__":
-    tellme(argv[1])
+    tellme(argv[1], CONFIG)
