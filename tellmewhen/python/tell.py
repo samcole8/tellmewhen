@@ -23,18 +23,12 @@ def post(tell, settings):
         tele = settings["tele"]
         post = requests.post(f"https://api.telegram.org/bot{tele['bot_token']}/sendMessage", params={"chat_id": tele["chat_id"], "text": tell[0]},)
 
-def get_arg():
-    tell = argv[1]
-    return (tell)
-
-def tellme():
-    # Get tell
-    tell_name = get_arg()
+def tellme(tell):
     # Get tell data from config
     config = load("tells.toml")
-    tell = config["tells"][tell_name]
+    tell = config["tells"][tell]
     # Post tell data
     post(tell, config["settings"])
 
 if __name__ == "__main__":
-    tellme()
+    tellme(argv[1])
