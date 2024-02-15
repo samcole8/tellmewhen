@@ -9,11 +9,14 @@ def load(config):
 
 def when():
     """"""
-    tells = load("tells.toml")["tells"]
-    append = ""
+    tells = load("me.toml")["tells"]
+    
+    # Add tells to crontab
+    crontab = ""
     for tell_name, tell in tells.items():
-        append += f"{tell[2]} /usr/bin/python3 /root/tellme.py {tell_name}\n"
-    command = f"echo -e '{append}' | crontab -u root -"
+        crontab += f"{tell[2]} /usr/bin/python3 /root/tellme.py {tell_name}\n"
+    # Write crontab
+    command = f"echo -e '{crontab}' | crontab -u root -"
     subprocess.run(command, shell=True, check=True)
 
 if __name__ == "__main__":
