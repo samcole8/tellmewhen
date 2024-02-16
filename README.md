@@ -33,6 +33,14 @@ After cloning the repository and adding at least one tell, you can build and dep
 
 If new tells are added, the container must be rebuilt.
 
+## Troubleshooting
+
+If the container isn't pushing notifications, you can perform the following steps to troubleshoot:
+
+1) Check you have tells in the [tells] configuration file.
+2) With Python installed on the Docker host, run tell.py to test your [settings] services: `python3 /path/to/tell.py test`.
+3) Check your cron expression is correct.
+
 ## Planned features
 
 Aside from SMS integration via an API such as Twilio, I plan to add:
@@ -41,4 +49,3 @@ Aside from SMS integration via an API such as Twilio, I plan to add:
 - A setup module that provides a CLI for config generation and a way to test and troubleshoot services.
 - Notifications for when services fail.
 - Retry failed notifications in the event of connectivity problems.
-
