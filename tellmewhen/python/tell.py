@@ -16,7 +16,7 @@ def load(config):
     return toml_dict
 
 def tele(tell, t):
-    requests.post(f"https://api.telegram.org/bot{t['bot_token']}/sendMessage", params={"chat_id": t["chat_id"], "text": tell},).status_code
+    print(requests.post(f"https://api.telegram.org/bot{t['bot_token']}/sendMessage", params={"chat_id": t["chat_id"], "text": tell},))
 
 def email(tell, e):
     # Set body
