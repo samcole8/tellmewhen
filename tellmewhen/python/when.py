@@ -40,6 +40,5 @@ def when():
     except:
         sys.exit(f"when.py: One or more errors in {config} prevented the crontab from being built.")
 
-
 if __name__ == "__main__":
     when()
