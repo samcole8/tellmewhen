@@ -5,6 +5,7 @@ import toml
 import requests
 import smtplib, ssl
 from email.mime.text import MIMEText
+from twilio.rest import Client
 
 DEV = False
 CONFIG = "me.toml"
@@ -33,7 +34,14 @@ def email(tell, e):
         server.sendmail(e["from"], e["to"], msg.as_string())
 
 def sms(tell, s):
-    print("SMS not implemented yet!")
+    client = Client(s["account_sid"], s["auth_token"])
+    message = client.messages \
+                    .create(
+                        body=tell,
+                        from_=s["from"],
+                        to=s["to"]
+                    )
+    print(message.sid)
 
 def post(tell, settings):
     calls = list(tell[1])
