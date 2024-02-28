@@ -5,6 +5,10 @@
         account_sid = ""
         # Twilio account Auth Token
         auth_token = ""
+        # Twilio sender number (Include country code)
+        from = ""
+        # Twilio receiver number (Include country code)
+        to = ""
 
     [settings.email]
         # Server FQDN and SSL port
