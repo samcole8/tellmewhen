@@ -1,7 +1,10 @@
 [settings]
 
     [settings.sms]
-        # SMS API settings
+        # Twilio account SID
+        account_sid = ""
+        # Twilio account Auth Token
+        auth_token = ""
 
     [settings.email]
         # Server FQDN and SSL port
