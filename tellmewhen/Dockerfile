@@ -3,7 +3,7 @@ WORKDIR /root/
 
 # Install dependencies
 RUN apk update && \
-    apk add --no-cache python3 dcron py3-toml py3-requests
+    apk add --no-cache python3 dcron py3-toml py3-requests py3-twilio
 
 # Copy Python scripts
 COPY python/* ./
