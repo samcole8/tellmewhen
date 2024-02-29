@@ -1,8 +1,11 @@
 # tellmewhen
 
-![](https://img.shields.io/badge/status-under%20development-orange)
+![](https://img.shields.io/badge/status-maintained-green)
+[![](https://img.shields.io/badge/release-v1.0.0-blue)]()
 
 Schedule custom notifications via Telegram, email, or SMS.
+
+Full documentation is available [here](http://samcole.me:443/archive/tellmewhen).
 
 ## Configuration
 
