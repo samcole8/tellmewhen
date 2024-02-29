@@ -34,6 +34,7 @@ def email(tell, e):
         server.sendmail(e["from"], e["to"], msg.as_string())
 
 def sms(tell, s):
+    # Set up SMS objects
     client = Client(s["account_sid"], s["auth_token"])
     message = client.messages \
                     .create(
@@ -41,6 +42,7 @@ def sms(tell, s):
                         from_=s["from"],
                         to=s["to"]
                     )
+    # Send SMS
     print(message.sid)
 
 def post(tell, settings):
