@@ -5,7 +5,7 @@
 
 Schedule custom notifications via Telegram, email, or SMS.
 
-Full documentation is available [here](http://samcole.me:443/archive/tellmewhen).
+Full documentation is available [here](http://samcole.me/archive/tellmewhen).
 
 ## Configuration
 
