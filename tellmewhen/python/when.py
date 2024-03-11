@@ -14,7 +14,7 @@ def load(config):
 def gen_crontab(tells):
     crontab = ""
     for tell_name, tell in tells.items():
-        crontab += f"{tell[2]} /usr/bin/python3 /root/tellme.py {tell_name}\n"
+        crontab += f"{tell[2]} /root/env/bin/python3 /root/tell.py {tell_name}\n"
     return crontab
 
 def write_crontab(crontab):
