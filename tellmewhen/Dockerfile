@@ -3,12 +3,17 @@ WORKDIR /root/
 
 # Install dependencies
 RUN apk update && \
-    apk add --no-cache python3 dcron py3-toml py3-requests py3-twilio
+    apk add --no-cache python3 dcron py3-pip py3-virtualenv
 
 # Copy Python scripts
 COPY python/* ./
-# Assemble cron jobs
-RUN python3 when.py
+
+# Create virtualenv
+RUN python3 -m venv env && \
+    source env/bin/activate && \
+    pip3 install toml requests twilio && \
+    # Assemble cron jobs
+    python3 when.py
 
 COPY entrypoint.sh ./
 ENTRYPOINT ["./entrypoint.sh"]
