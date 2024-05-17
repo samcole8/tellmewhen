@@ -1,5 +1,4 @@
 import tell
-import requests
 
 def tell_load():
     """Check config file is loaded correctly."""
@@ -19,4 +18,3 @@ def tell_post():
             print(f"{call}: OK")
         else:
             print(f"{call}: Fail")
-
