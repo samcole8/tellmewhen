@@ -37,8 +37,10 @@ def when():
     try:
         write_crontab(gen_crontab(config["tells"]))
         print("tmw: write crontab success")
-    except:
-        sys.exit(f"when.py: One or more errors in {config} prevented the crontab from being built.")
+    except FileNotFoundError:
+        sys.exit("when.py: Crontab could not be found.")
+    except PermissionError:
+        sys.exit("when.py: Script does not have permission to execute the crontab command as root.")
 
 if __name__ == "__main__":
     when()
