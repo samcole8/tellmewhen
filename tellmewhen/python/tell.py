@@ -3,7 +3,8 @@
 from sys import argv
 import toml
 import requests
-import smtplib, ssl
+import smtplib
+import ssl
 from email.mime.text import MIMEText
 from twilio.rest import Client
 
