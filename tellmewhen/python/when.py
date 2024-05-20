@@ -18,8 +18,8 @@ def gen_crontab(tells):
     return crontab
 
 def write_crontab(crontab):
-    command = f"echo -e '{crontab}' | crontab -u root -"
-    subprocess.run(command, shell=True, check=True)
+    command = ['crontab', '-u', 'root', '-']
+    subprocess.run(command, input=crontab, text=True, check=True)
 
 def when():
     """Build and write crontab."""
