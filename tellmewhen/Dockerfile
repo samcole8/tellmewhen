@@ -16,4 +16,5 @@ RUN python3 -m venv env && \
     python3 when.py
 
 COPY entrypoint.sh ./
+RUN chmod +x entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
