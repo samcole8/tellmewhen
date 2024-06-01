@@ -1,4 +1,6 @@
 FROM alpine:latest
+
+# Set working directory
 WORKDIR /root/
 
 # Install dependencies
@@ -15,6 +17,8 @@ RUN python3 -m venv env && \
     # Assemble cron jobs
     python3 when.py
 
+
+# Install and run entrypoint
 COPY entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
