@@ -35,5 +35,6 @@
         bot_token = ""
 
 [tells]
-    # Add your tells here. Do not remove the test tell, which will never run.
+    # Add your tells here.
+    # e.g. car_wash = ["Get the car washed!", "st", "0 0 1 * *"]
     test = ["Test", "set", "0 0 31 2 *"]
