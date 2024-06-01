@@ -1,7 +1,7 @@
 # tellmewhen
 
 ![](https://img.shields.io/badge/status-maintained-green)
-[![](https://img.shields.io/badge/release-v1.0.1_"Muskrat"-blue)](https://github.com/samcole8/tellmewhen/releases/tag/v1.0.1)
+[![](https://img.shields.io/badge/release-v1.0.2_"Quetzal"-blue)](https://github.com/samcole8/tellmewhen/releases/tag/v1.0.2)
 
 Schedule custom notifications via Telegram, email, or SMS.
 
